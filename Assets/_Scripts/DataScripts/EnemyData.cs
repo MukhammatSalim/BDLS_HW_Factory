@@ -1,7 +1,5 @@
 using UnityEngine;
 
-namespace Exemple.Factory
-{
     /// <summary>
     /// Enemy types
     /// </summary>
@@ -25,4 +23,3 @@ namespace Exemple.Factory
         public float DmgReduction;
         public float EvasionChance;
     }   
-}

@@ -1,12 +1,8 @@
 using System;
-using Exemple.Factory;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-namespace Exemple.Factory
-{
     /// <summary>
     /// Enemy abstract class
     /// </summary>
@@ -20,16 +16,21 @@ namespace Exemple.Factory
         /// <param name="data"></param>
         public event Action<float> OnEnemyKilled;
         public NavMeshAgent _agent;
-        public Image _HPBar;
+        public Slider _HPBar;
         public float _health;
         private float _maxHealth;
+        float _dodgeChance;
+        float _dmgReduction;
         public float WaveCost { get; internal set; }
 
         public WaveManager waveMeneger;
 
         private void OnEnable()
         {
-            waveMeneger = FindAnyObjectByType<WaveManager>();
+            
+            waveMeneger = GameObject.Find("--Managers").GetComponent<WaveManager>();
+            _dodgeChance = data.EvasionChance;
+            _dmgReduction = data.DmgReduction;
             _health = data.Health;
             _maxHealth = _health;
         }
@@ -51,14 +52,16 @@ namespace Exemple.Factory
 
         public void TakeDamage(float dmg)
         {
-            _health -= dmg;
+            if (UnityEngine.Random.Range(1,100)>_dodgeChance){
+            _health -= dmg * (1-(_dmgReduction/100));
 
-            _HPBar.fillAmount = _health / _maxHealth;
+            _HPBar.value = _health / _maxHealth;
 
             if (_health <= 0)
             {
                 waveMeneger.DestroyEnemy(gameObject);
             }
+            } else Debug.Log("Dmg Evaded");
         }
 
         private void OnMouseDown() {
@@ -69,4 +72,3 @@ namespace Exemple.Factory
             this.data = data;
         }
     }
-}

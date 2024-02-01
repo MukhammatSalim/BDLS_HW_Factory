@@ -1,7 +1,5 @@
 using UnityEngine;
 
-namespace Exemple.Factory
-{
     /// <summary>
     /// Enemy interface
     /// </summary>
@@ -20,4 +18,3 @@ namespace Exemple.Factory
         void Move(Vector3 targetLocation);
         void TakeDamage(float dmg);
     }
-}

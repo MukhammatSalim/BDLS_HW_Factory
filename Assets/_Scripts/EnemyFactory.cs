@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Exemple.Factory
-{
     /// <summary>
     /// Generic factory for creating enemies
     /// </summary>
@@ -23,4 +21,3 @@ namespace Exemple.Factory
             return enemy;
         }
     }
-}

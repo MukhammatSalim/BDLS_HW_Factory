@@ -1,4 +1,3 @@
-using Exemple.Factory;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour

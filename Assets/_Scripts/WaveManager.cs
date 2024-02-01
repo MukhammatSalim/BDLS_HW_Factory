@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Exemple.Factory
-{
     public class WaveManager : MonoBehaviour
     {
         public Transform SpawnLocation;
@@ -34,25 +32,26 @@ namespace Exemple.Factory
 
         private void Start()
         {
-            CreateWave(waveSettings[0]);
+            for(int i = 0; i < waveSettings.Count; i++)
+            CreateWave(waveSettings[i]);
         }
 
-        // /// <summary>
-        // /// Create wave of enemies
-        // /// </summary>
-        // /// <param name="waveData"></param>
-        // public void CreateWave(List<WaveSettings> waveSettings)
-        // {
-        //     foreach (WaveSettings data in waveSettings)
-        //     {
-        //         for (int i = 0; i < data.EnemyCount; i++)
-        //         {
-        //             IEnemy enemy = CreateEnemy(data.EnemyData);
-        //             enemy.Move(TargetLocation.position);//you can add Vector3 enemy.Move(whereToMove);
-        //             enemies.Add(enemy);
-        //         }
-        //     }
-        // }
+        /// <summary>
+        /// Create wave of enemies
+        /// </summary>
+        /// <param name="waveData"></param>
+        public void CreateWave(List<WaveSettings> waveSettings)
+        {
+            foreach (WaveSettings data in waveSettings)
+            {
+                for (int i = 0; i < data.EnemyCount; i++)
+                {
+                    IEnemy enemy = CreateEnemy(data.EnemyData);
+                    enemy.Move(TargetLocation.position);//you can add Vector3 enemy.Move(whereToMove);
+                    enemies.Add(enemy.gameObject);
+                }
+            }
+        }
 
         /// <summary>
         /// Create one enemy
@@ -100,4 +99,3 @@ namespace Exemple.Factory
             Destroy(enemy);
         }
     }
-}
