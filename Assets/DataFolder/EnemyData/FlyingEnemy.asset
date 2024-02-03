@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c38c5ed16c485a14e81428a987ee4a27, type: 3}
   m_Name: FlyingEnemy
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 129826277112067917, guid: b231e6ace63f7f544b024212ce314409, type: 3}
   Type: 1
   MoveSpeed: 25
   Health: 75
